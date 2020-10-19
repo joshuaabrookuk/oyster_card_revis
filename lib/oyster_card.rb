@@ -1,2 +1,5 @@
 class Oystercard
-end 
+
+  def balance
+  end 
+end
