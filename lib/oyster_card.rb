@@ -2,6 +2,8 @@
 
 # The Oystercard class has a balance
 class Oystercard
+  MAX_BALANCE = 90
+
   attr_reader :balance
 
   def initialize
