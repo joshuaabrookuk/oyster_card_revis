@@ -25,4 +25,11 @@ describe Oystercard do
 
   it { should respond_to :deduct }
 
+  describe '#deduct' do
+    it 'should deduct the ammout from balance' do
+      subject.top_up(20)
+      subject.deduct(15)
+      expect(subject.balance).to eq 15
+    end
+  end
 end
