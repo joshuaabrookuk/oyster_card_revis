@@ -56,11 +56,4 @@ describe Oystercard do
 
   it { should respond_to :touch_out }
 
-  # describe '#touch_out' do
-  #   it 'should set #in_journey? to false' do
-  #     subject.touch_in
-  #     subject.touch_out
-  #     expect(subject.in_journey?).to eq false
-  #   end
-  # end
 end
