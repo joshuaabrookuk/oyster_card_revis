@@ -25,7 +25,9 @@ class Oystercard
     @journey = true
   end
 
-  def touch_out; end
+  def touch_out
+    @journey = false
+   end
 
   def in_journey?
     @journey
