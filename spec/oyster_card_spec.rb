@@ -12,5 +12,5 @@ describe Oystercard do
       subject.top_up(20)
       expect(subject.balance).to eq 20
     end
-  end 
+  end
 end
