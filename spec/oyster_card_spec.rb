@@ -32,4 +32,7 @@ describe Oystercard do
       expect(subject.balance).to eq 15
     end
   end
+
+  it { should respond_to :touch_in }
+
 end

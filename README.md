@@ -43,6 +43,19 @@ oystercard.balance
 => 15
 
 
+In order to get through the barriers.
+As a customer
+I need to touch in and out.
+
+
+oyster_card.top_up(20)
+oystercard.touch_in
+oystercard.in_journey
+=> true
+oystercard.touch_out
+oystercard.in_journey
+=> fasle
+
 
 irb testing
 
@@ -53,3 +66,6 @@ oyster_card.top_up(20)
 oyster_card.balance
 oystercard.deduct(5)
 oyster_card.balance
+oystercard.touch_in
+oystercard.in_journey
+oystercard.touch_out
