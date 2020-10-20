@@ -32,8 +32,24 @@ oystercard.balance
 => Error Raised /// maximum top up ammount is £90
 
 
+In order to pay for my journey
+As a customer
+I need my fare deducted from my card
+
+oystercard = Oystercard.new
+oystercard.top_up(20)
+oystercard.deduct(5)
+oystercard.balance
+=> 15
+
+
+
 irb testing
 
 require './lib/oyster_card'
 oyster_card = Oystercard.new
-oyster_card.top_up()
+oyster_card.balance
+oyster_card.top_up(20)
+oyster_card.balance
+oystercard.deduct(5)
+oyster_card.balance
