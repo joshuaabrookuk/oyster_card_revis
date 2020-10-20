@@ -35,4 +35,11 @@ describe Oystercard do
 
   it { should respond_to :touch_in }
 
+  describe '#touch_in' do
+    it 'should set #in_journey? to true' do
+      subject.touch_in
+      exoect(subject.in_journey?).to eq true
+    end
+  end
+
 end
