@@ -7,6 +7,16 @@ describe Oystercard do
     expect(Oystercard::MAX_BALANCE).to eq 90
   end
 
+  describe '#initialize' do
+    it 'should initialize with balance at 0' do
+      expect(subject.balance).to eq 0
+    end
+
+    it 'should initialize with journey as false' do
+      expect(subject.journey).to eq false
+    end
+  end
+
   it { should respond_to :balance }
 
   it { should respond_to(:top_up).with(1).arguments }
@@ -33,6 +43,8 @@ describe Oystercard do
     end
   end
 
+  it { should respond_to :journey }
+
   it { should respond_to :touch_in }
 
   describe '#touch_in' do
@@ -41,5 +53,4 @@ describe Oystercard do
       expect(subject.in_journey?).to eq true
     end
   end
-
 end
