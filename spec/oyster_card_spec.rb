@@ -38,7 +38,7 @@ describe Oystercard do
   describe '#touch_in' do
     it 'should set #in_journey? to true' do
       subject.touch_in
-      exoect(subject.in_journey?).to eq true
+      expect(subject.in_journey?).to eq true
     end
   end
 
