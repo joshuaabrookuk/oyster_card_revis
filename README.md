@@ -79,7 +79,9 @@ oyster_card.balance
 oystercard.touch_in
 oystercard.touch_out
 oyster_card.balance
-=> (@balance - MININUM_FARE) /// (we haven't been told to give this a value)
+# => (@balance - MININUM_FARE) /// (we haven't been told to give this a value)
+# but i will give it 1
+=> 19
 
 
 irb testing
