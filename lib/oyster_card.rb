@@ -24,6 +24,7 @@ class Oystercard
 
   def touch_in
     raise "Minimum balance is #{MININUM_BALANCE} for entry" if @balance < MININUM_BALANCE
+    
     @journey = true
   end
 

@@ -49,6 +49,7 @@ describe Oystercard do
 
   describe '#touch_in' do
     it 'should set #in_journey? to true' do
+      subject.top_up(20)
       subject.touch_in
       expect(subject.in_journey?).to eq true
     end
@@ -62,9 +63,9 @@ describe Oystercard do
 
   describe '#touch_out' do
     it 'should set #in_journey? to false' do
+      subject.top_up(20)
       subject.touch_in
       subject.touch_out
-      # expect(subject.in_journey?).to eq false
       expect(subject).not_to be_in_journey
     end
   end
