@@ -60,7 +60,8 @@ describe Oystercard do
     it 'should set #in_journey? to false' do
       subject.touch_in
       subject.touch_out
-      expect(subject.in_journey?).to eq false
+      # expect(subject.in_journey?).to eq false
+      expect(subject).not_to be_in_journey
     end
   end
 end
