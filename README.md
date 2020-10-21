@@ -57,6 +57,17 @@ oystercard.in_journey
 => fasle
 
 
+In order to pay for my journey
+As a customer
+I need to have the minimum amount (£1) for a single journey.
+
+
+oyster_card.balance
+=> 0
+oyster_card.touch_in
+=> Error Raised /// minimum balance is £1 to enter
+
+
 irb testing
 
 require './lib/oyster_card'

@@ -52,6 +52,10 @@ describe Oystercard do
       subject.touch_in
       expect(subject.in_journey?).to eq true
     end
+
+    it 'should raise an error if #balance < MININUM_BALANCE' do
+      expect { subject.touch_in }.to raise_error "Minimum balance is #{Oystercard::MININUM_BALANCE} for entry"
+    end
   end
 
   it { should respond_to :touch_out }
