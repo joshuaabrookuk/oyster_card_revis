@@ -33,15 +33,11 @@ describe Oystercard do
     end
   end
 
-  it { should respond_to :deduct }
-
-  describe '#deduct' do
-    it 'should deduct the ammout from balance' do
-      subject.top_up(20)
-      subject.deduct(5)
-      expect(subject.balance).to eq 15
-    end
-  end
+  # describe '#deduct' do
+  #   it 'should deduct the ammout from balance' do
+  #     expect (subject.send(:deduct).with('1').arguments).to be_truthy
+  #   end
+  # end
 
   it { should respond_to :journey }
 
