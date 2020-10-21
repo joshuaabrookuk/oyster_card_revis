@@ -68,6 +68,20 @@ oyster_card.touch_in
 => Error Raised /// minimum balance is £1 to enter
 
 
+In order to pay for my journey
+As a customer
+When my journey is complete, I need the correct amount deducted from my card
+
+
+oyster_card.top_up(20)
+oyster_card.balance
+=> 20
+oystercard.touch_in
+oystercard.touch_out
+oyster_card.balance
+=> (@balance - MININUM_FARE) /// (we haven't been told to give this a value)
+
+
 irb testing
 
 require './lib/oyster_card'

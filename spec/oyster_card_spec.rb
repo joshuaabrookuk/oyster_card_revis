@@ -68,5 +68,11 @@ describe Oystercard do
       subject.touch_out
       expect(subject).not_to be_in_journey
     end
+
+    it 'should deduct the MININUM_FARE' do
+      subject.top_up(20)
+      subject.touch_in
+      expect { subject.touch_out }.to change { subject.balance }.by(-Oystercard::MININUM_FARE)
+    end
   end
 end
