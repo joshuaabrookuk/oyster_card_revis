@@ -61,20 +61,20 @@ describe Oystercard do
     it 'should set #in_journey? to false' do
       subject.top_up(20)
       subject.touch_in(station)
-      subject.touch_out
+      subject.touch_out(station)
       expect(subject).not_to be_in_journey
     end
 
     it 'should deduct the MININUM_FARE' do
       subject.top_up(20)
       subject.touch_in(station)
-      expect { subject.touch_out }.to change { subject.balance }.by(-Oystercard::MININUM_FARE)
+      expect { subject.touch_out(station) }.to change { subject.balance }.by(-Oystercard::MININUM_FARE)
     end
 
     it 'should forget the entry_station' do
       subject.top_up(20)
       subject.touch_in(station)
-      subject.touch_out
+      subject.touch_out(station)
       expect(subject.entry_station).to eq nil
     end
 
@@ -82,7 +82,7 @@ describe Oystercard do
       subject.top_up(20)
       subject.touch_in(station)
       subject.touch_out(station)
-      expect(subject.touch_out(station)).to eq station
+      expect(subject.exit_station).to eq station
     end
   end
 end
