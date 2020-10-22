@@ -93,6 +93,9 @@ oyster_card.top_up(20)
 oystercard.touch_in('Waterloo')
 oystercard.entry_station
 => 'Waterloo'
+oyster_card.touch_out
+oystercard.entry_station
+=> nil
 
 
 irb testing
@@ -105,5 +108,8 @@ oyster_card.balance
 oyster_card.deduct(5)
 oyster_card.balance
 oyster_card.touch_in('Waterloo')
+oystercard.entry_station
 oyster_card.in_journey
 oyster_card.touch_out
+oystercard.entry_station
+oyster_card.balance
