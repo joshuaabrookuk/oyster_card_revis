@@ -41,14 +41,14 @@ describe Oystercard do
   it { should respond_to(:touch_in).with(1).arguments }
 
   describe '#touch_in' do
-    xit 'should set #in_journey? to true' do
+    it 'should set #in_journey? to true' do
       subject.top_up(20)
-      subject.touch_in
+      subject.touch_in(station)
       expect(subject.in_journey?).to eq true
     end
 
-    xit 'should raise an error if #balance < MININUM_BALANCE' do
-      expect { subject.touch_in }.to raise_error "Minimum balance is #{Oystercard::MININUM_BALANCE} for entry"
+    it 'should raise an error if #balance < MININUM_BALANCE' do
+      expect { subject.touch_in(station) }.to raise_error "Minimum balance is #{Oystercard::MININUM_BALANCE} for entry"
     end
 
     it 'should remmeber the entry_station' do
@@ -61,16 +61,16 @@ describe Oystercard do
   it { should respond_to :touch_out }
 
   describe '#touch_out' do
-    xit 'should set #in_journey? to false' do
+    it 'should set #in_journey? to false' do
       subject.top_up(20)
-      subject.touch_in
+      subject.touch_in(station)
       subject.touch_out
       expect(subject).not_to be_in_journey
     end
 
-    xit 'should deduct the MININUM_FARE' do
+    it 'should deduct the MININUM_FARE' do
       subject.top_up(20)
-      subject.touch_in
+      subject.touch_in(station)
       expect { subject.touch_out }.to change { subject.balance }.by(-Oystercard::MININUM_FARE)
     end
   end
