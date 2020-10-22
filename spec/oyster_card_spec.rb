@@ -100,4 +100,13 @@ describe Oystercard do
   end
 
   it { should respond_to :journeys }
+
+  describe '#journey' do
+    it 'stores a hash of entry/exit_station' do
+      subject.top_up(20)
+      subject.touch_in(entry_station)
+      subject.touch_out(exit_station)
+      expect(subject.journeys).to eq [{entry_station: entry_station, exit_station: exit_station}]
+    end
+  end
 end
