@@ -21,10 +21,6 @@ class Oystercard
     @balance += amount
   end
 
-  def deduct(amount)
-    @balance -= amount
-  end
-
   def touch_in(station)
     raise "Minimum balance is #{MININUM_BALANCE} for entry" if @balance < MININUM_BALANCE
 
@@ -40,5 +36,11 @@ class Oystercard
 
   def in_journey?
     !!entry_station
+  end
+
+  private 
+
+  def deduct(amount)
+    @balance -= amount
   end
 end
