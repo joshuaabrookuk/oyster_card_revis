@@ -93,4 +93,6 @@ describe Oystercard do
       expect(subject.exit_station).to eq station
     end
   end
+
+  it { should respond_to :journeys }
 end
