@@ -3,6 +3,8 @@
 require 'oyster_card'
 
 describe Oystercard do
+  let(:station) {double :station}
+
   it 'should have MAX_BALANCE const at 90 by default' do
     expect(Oystercard::MAX_BALANCE).to eq 90
   end
@@ -33,15 +35,10 @@ describe Oystercard do
     end
   end
 
-  # describe '#deduct' do
-  #   it 'should deduct the ammout from balance' do
-  #     expect (subject.send(:deduct).with('1').arguments).to be_truthy
-  #   end
-  # end
-
   it { should respond_to :journey }
 
   it { should respond_to :touch_in }
+  # it { should respond_to (:touch_in).with(1).arguments }
 
   describe '#touch_in' do
     it 'should set #in_journey? to true' do
@@ -52,6 +49,12 @@ describe Oystercard do
 
     it 'should raise an error if #balance < MININUM_BALANCE' do
       expect { subject.touch_in }.to raise_error "Minimum balance is #{Oystercard::MININUM_BALANCE} for entry"
+    end
+
+    it 'should remmeber the entry_station' do
+      subject.top_up(20)
+      subject.touch_in(station)
+      expect(subject.entry_station).to eq station
     end
   end
 

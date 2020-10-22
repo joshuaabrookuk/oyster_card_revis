@@ -84,6 +84,17 @@ oyster_card.balance
 => 19
 
 
+In order to pay for my journey
+As a customer
+I need to know where I've travelled from
+
+
+oyster_card.top_up(20)
+oystercard.touch_in('Waterloo')
+oystercard.entry_station
+=> 'Waterloo'
+
+
 irb testing
 
 require './lib/oyster_card'
