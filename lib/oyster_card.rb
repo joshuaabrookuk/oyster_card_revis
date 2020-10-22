@@ -27,6 +27,7 @@ class Oystercard
   def touch_in(station)
     raise "Minimum balance is #{MININUM_BALANCE} for entry" if @balance < MININUM_BALANCE
 
+    @exit_station = nil
     @entry_station = station
   end
 
