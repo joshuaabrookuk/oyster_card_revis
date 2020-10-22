@@ -17,6 +17,10 @@ describe Oystercard do
     it 'should initialize with entry_station set to nil' do
       expect(subject.entry_station).to eq nil
     end
+
+    it 'should initialize journeys as an empty hash' do
+      expect(subject.journeys).to eq ({})
+    end
   end
 
   it { should respond_to :balance }
