@@ -102,8 +102,8 @@ oyster_card = Oystercard.new
 oyster_card.balance
 oyster_card.top_up(20)
 oyster_card.balance
-oystercard.deduct(5)
+oyster_card.deduct(5)
 oyster_card.balance
-oystercard.touch_in
-oystercard.in_journey
-oystercard.touch_out
+oyster_card.touch_in('Waterloo')
+oyster_card.in_journey
+oyster_card.touch_out
