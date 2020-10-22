@@ -33,6 +33,7 @@ class Oystercard
   end
 
   def touch_out
+    @entry_station = nil
     @journey = false
     deduct(MININUM_FARE)
   end
