@@ -55,7 +55,7 @@ describe Oystercard do
     end
   end
 
-  it { should respond_to :touch_out }
+  it { should respond_to(:touch_out).with(1).arguments }
 
   describe '#touch_out' do
     it 'should set #in_journey? to false' do
@@ -76,6 +76,13 @@ describe Oystercard do
       subject.touch_in(station)
       subject.touch_out
       expect(subject.entry_station).to eq nil
+    end
+
+    it 'should accept an exit_station' do
+      subject.top_up(20)
+      subject.touch_in(station)
+      subject.touch_out(station)
+      expect(subject.touch_out(station)).to eq station
     end
   end
 end
