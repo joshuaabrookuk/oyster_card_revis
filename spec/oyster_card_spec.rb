@@ -53,6 +53,14 @@ describe Oystercard do
       subject.touch_in(station)
       expect(subject.entry_station).to eq station
     end
+
+    it 'should forget the previous exit_station' do
+      subject.top_up(20)
+      subject.touch_in(station)
+      subject.touch_out(station)
+      subject.touch_in(station)
+      expect(subject.exit_station).to eq nil
+    end
   end
 
   it { should respond_to(:touch_out).with(1).arguments }
