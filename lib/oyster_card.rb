@@ -6,7 +6,7 @@ class Oystercard
   MININUM_BALANCE = 1
   MININUM_FARE = 1
 
-  attr_reader :balance, :entry_station, :exit_station
+  attr_reader :balance, :entry_station, :exit_station, :journeys
 
   def initialize
     @balance = 0
