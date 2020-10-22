@@ -5,6 +5,7 @@ require 'oyster_card'
 describe Oystercard do
   let(:entry_station) { double :entry_station }
   let(:exit_station) { double :exit_station }
+  let(:journey) { { entry_station: entry_station, exit_station: exit_station } }
 
   it 'should have MAX_BALANCE const at 90 by default' do
     expect(Oystercard::MAX_BALANCE).to eq 90
@@ -106,7 +107,7 @@ describe Oystercard do
       subject.top_up(20)
       subject.touch_in(entry_station)
       subject.touch_out(exit_station)
-      expect(subject.journeys).to eq [{entry_station: entry_station, exit_station: exit_station}]
+      expect(subject.journeys).to eq [journey]
     end
   end
 end
