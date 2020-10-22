@@ -3,7 +3,8 @@
 require 'oyster_card'
 
 describe Oystercard do
-  let(:station) { double :station }
+  let(:entry_station) { double :entry_station }
+  let(:exit_station) { double :exit_station }
 
   it 'should have MAX_BALANCE const at 90 by default' do
     expect(Oystercard::MAX_BALANCE).to eq 90
@@ -19,7 +20,7 @@ describe Oystercard do
     end
 
     it 'should initialize journeys as an empty hash' do
-      expect(subject.journeys).to eq ({})
+      expect(subject.journeys).to eq []
     end
   end
 
@@ -44,25 +45,25 @@ describe Oystercard do
   describe '#touch_in' do
     it 'should set #in_journey? to true' do
       subject.top_up(20)
-      subject.touch_in(station)
+      subject.touch_in(entry_station)
       expect(subject.in_journey?).to eq true
     end
 
     it 'should raise an error if #balance < MININUM_BALANCE' do
-      expect { subject.touch_in(station) }.to raise_error "Minimum balance is #{Oystercard::MININUM_BALANCE} for entry"
+      expect { subject.touch_in(entry_station) }.to raise_error "Minimum balance is #{Oystercard::MININUM_BALANCE} for entry"
     end
 
     it 'should remmeber the entry_station' do
       subject.top_up(20)
-      subject.touch_in(station)
-      expect(subject.entry_station).to eq station
+      subject.touch_in(entry_station)
+      expect(subject.entry_station).to eq entry_station
     end
 
     it 'should forget the previous exit_station' do
       subject.top_up(20)
-      subject.touch_in(station)
-      subject.touch_out(station)
-      subject.touch_in(station)
+      subject.touch_in(entry_station)
+      subject.touch_out(entry_station)
+      subject.touch_in(exit_station)
       expect(subject.exit_station).to eq nil
     end
   end
@@ -72,29 +73,29 @@ describe Oystercard do
   describe '#touch_out' do
     it 'should set #in_journey? to false' do
       subject.top_up(20)
-      subject.touch_in(station)
-      subject.touch_out(station)
+      subject.touch_in(entry_station)
+      subject.touch_out(exit_station)
       expect(subject).not_to be_in_journey
     end
 
     it 'should deduct the MININUM_FARE' do
       subject.top_up(20)
-      subject.touch_in(station)
-      expect { subject.touch_out(station) }.to change { subject.balance }.by(-Oystercard::MININUM_FARE)
+      subject.touch_in(entry_station)
+      expect { subject.touch_out(exit_station) }.to change { subject.balance }.by(-Oystercard::MININUM_FARE)
     end
 
     it 'should forget the entry_station' do
       subject.top_up(20)
-      subject.touch_in(station)
-      subject.touch_out(station)
+      subject.touch_in(entry_station)
+      subject.touch_out(exit_station)
       expect(subject.entry_station).to eq nil
     end
 
     it 'should accept an exit_station' do
       subject.top_up(20)
-      subject.touch_in(station)
-      subject.touch_out(station)
-      expect(subject.exit_station).to eq station
+      subject.touch_in(entry_station)
+      subject.touch_out(exit_station)
+      expect(subject.exit_station).to eq exit_station
     end
   end
 
