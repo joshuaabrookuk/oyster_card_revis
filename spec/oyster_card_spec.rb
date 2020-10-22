@@ -3,7 +3,7 @@
 require 'oyster_card'
 
 describe Oystercard do
-  let(:station) {double :station}
+  let(:station) { double :station }
 
   it 'should have MAX_BALANCE const at 90 by default' do
     expect(Oystercard::MAX_BALANCE).to eq 90
@@ -14,8 +14,8 @@ describe Oystercard do
       expect(subject.balance).to eq 0
     end
 
-    it 'should initialize with journey as false' do
-      expect(subject.journey).to eq false
+    it 'should initialize with entry_station set to nil' do
+      expect(subject.entry_station).to eq nil
     end
   end
 
@@ -35,9 +35,6 @@ describe Oystercard do
     end
   end
 
-  it { should respond_to :journey }
-
-  # it { should respond_to :touch_in }
   it { should respond_to(:touch_in).with(1).arguments }
 
   describe '#touch_in' do
