@@ -4,15 +4,7 @@ require 'station'
 
 describe Station do
 
-  describe '#initialize' do
-    it 'should initialize with an empty name' do
-      expect(subject.name).to eq ""
-    end
-
-    it 'should initialize with zone set to 0' do
-      expect(subject.zone).to eq 0
-    end
-  end
+  subject {described_class.new(name: "Old Street", zone: 1)}
 
   it { should respond_to :name }
 

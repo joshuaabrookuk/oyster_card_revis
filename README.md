@@ -121,7 +121,7 @@ station.name
 station.zone
 => 1
 
-irb testing
+irb testing oyster_card
 
 require './lib/oyster_card'
 oyster_card = Oystercard.new
@@ -132,3 +132,10 @@ oyster_card.touch_in('Waterloo')
 oyster_card.entry_station
 oyster_card.touch_out('Bank')
 oyster_card.journeys
+
+irb testing oyster_card
+
+require './lib/station'
+station = Station.new
+station.name
+station.zone

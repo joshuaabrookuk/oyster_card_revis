@@ -2,10 +2,8 @@
 
 # The Station class has a name and zone number
 class Station
-  attr_reader :name, :zone
+  attr_reader
 
   def initialize
-    @name = ""
-    @zone = 0
   end
 end
