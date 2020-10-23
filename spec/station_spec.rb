@@ -3,4 +3,5 @@
 require 'station'
 
 describe Station do
-end 
+  it { should respond_to :name }
+end
