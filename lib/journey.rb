@@ -2,36 +2,23 @@
 
 # The Journey class has methods extracted from Oystercard
 class Journey
-  PENALTY_FARE
+  PENALTY_FARE = 1
 
-  attr_reader :entry_station, :exit_station, :journeys
+attr_reader :entry_station
 
-  def initialize
-    @entry_station = nil
-    @exit_station = nil
-    @journeys = []
+  def initialize(station)
+    @entry_station = station
   end
-
-  def in_journey?
-    !!entry_station
-  end
-
-  def push_journey
-    @journeys << {
-      entry_station: entry_station,
-      exit_station: exit_station
-    }
-  end
-
-
 
   def complete?
   end
 
   def fare
+    PENALTY_FARE
   end
 
-  def finish
+  def finish(station)
+    self
   end
 
 
