@@ -2,6 +2,8 @@
 
 # The Journey class has methods extracted from Oystercard
 class Journey
+  PENALTY_FARE
+
   attr_reader :entry_station, :exit_station, :journeys
 
   def initialize
@@ -20,4 +22,29 @@ class Journey
       exit_station: exit_station
     }
   end
+
+
+
+  def complete?
+  end
+
+  def fare
+  end
+
+  def finish
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 end
