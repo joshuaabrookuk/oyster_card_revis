@@ -121,6 +121,13 @@ station.name
 station.zone
 => 1
 
+
+In order to be charged correctly
+As a customer
+I need a penalty charge deducted if I fail to touch in or out
+
+
+
 irb testing oyster_card
 
 require './lib/oyster_card'
@@ -133,7 +140,7 @@ oyster_card.entry_station
 oyster_card.touch_out('Bank')
 oyster_card.journeys
 
-irb testing oyster_card
+irb testing station
 
 require './lib/station'
 station = Station.new
