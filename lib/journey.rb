@@ -2,7 +2,6 @@
 
 # The Journey class has methods extracted from Oystercard
 class Journey
-
   PENALTY_FARE = 6
   FARE = 1
 
@@ -14,16 +13,15 @@ class Journey
   end
 
   def complete?
-    if @exit_station != nil
+    if !@exit_station.nil?
       true
     else
       false
     end
-
   end
 
   def fare
-    if @exit_station == nil
+    if @exit_station.nil?
       PENALTY_FARE
     else
       FARE
