@@ -6,7 +6,6 @@ describe Oystercard do
   let(:entry_station) { double :entry_station }
   let(:exit_station) { double :exit_station }
   let(:journey) { { entry_station: entry_station, exit_station: exit_station } }
-
   it 'should have MAX_BALANCE const at 90 by default' do
     expect(Oystercard::MAX_BALANCE).to eq 90
   end
