@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+require_relative 'journey'
+require_relative 'station'
+station = Station.new('Waterloo',1)
+p journey = Journey.new(station)
+
 # The Oystercard class has a balance
 class Oystercard
   MAX_BALANCE = 90
@@ -7,7 +12,7 @@ class Oystercard
   MININUM_FARE = 1
   attr_reader :balance, :entry_station, :exit_station, :journeys
 
-  def initialize
+  def initialize(station)
     @balance = 0
     @entry_station = nil
     @exit_station = nil
