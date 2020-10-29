@@ -146,3 +146,12 @@ require './lib/station'
 station = Station.new
 station.name
 station.zone
+
+
+irb testing journey
+
+require './lib/station'
+station = Station.new
+
+require './lib/journey'
+journey = Journey.new(station)

@@ -2,21 +2,19 @@
 
 require_relative 'journey'
 require_relative 'station'
-station = Station.new('Waterloo',1)
-p journey = Journey.new(station)
 
 # The Oystercard class has a balance
 class Oystercard
   MAX_BALANCE = 90
   MININUM_BALANCE = 1
   MININUM_FARE = 1
-  attr_reader :balance, :entry_station, :exit_station, :journeys
+  attr_reader :balance, :entry_station, :journey, :journeys
 
-  def initialize(station)
+  def initialize(journey)
     @balance = 0
     @entry_station = nil
     @exit_station = nil
-    @journeys = []
+    @journey = journey
   end
 
   def top_up(amount)
@@ -25,18 +23,18 @@ class Oystercard
     @balance += amount
   end
 
-  def touch_in(station)
+  def touch_in(entry_station)
     raise "Minimum balance is #{MININUM_BALANCE} for entry" if @balance < MININUM_BALANCE
 
-    @exit_station = nil
-    @entry_station = station
+    journey = Journey.new(entry_station)
   end
 
-  def touch_out(station)
-    @exit_station = station
+  def touch_out(exit_station)
+    journey.finish(exit_station)
+    # @exit_station = station
     push_journey
-    @entry_station = nil
-    deduct(MININUM_FARE)
+    # @entry_station = nil
+    # deduct(MININUM_FARE)
   end
 
   def in_journey?
@@ -45,14 +43,11 @@ class Oystercard
 
   private
 
-  def push_journey
-      @journeys << {
-        entry_station: entry_station,
-        exit_station: exit_station
-      }
-    end
-
   def deduct(amount)
     @balance -= amount
+  end
+
+  def push_journey
+    @journeys << @journey
   end
 end
